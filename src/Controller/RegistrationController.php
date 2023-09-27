@@ -81,4 +81,5 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('admin');
     }
+    
 }

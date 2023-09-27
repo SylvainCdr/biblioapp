@@ -2,12 +2,13 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\User;
+use App\Entity\Author;
+use App\Entity\Client;
 use App\Entity\Editor;
 use App\Entity\Format;
 use App\Entity\Category;
-use App\Entity\Client;
 use App\Entity\Language;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Formats', 'fas fa-arrows-up-down-left-right', Format::class);
         yield MenuItem::linkToCrud('Langues', 'fas fa-language', Language::class);
         yield MenuItem::section('Autres');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-arrow-left', 'app_page');
     }
 }
