@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ContactType;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +24,22 @@ class PageController extends AbstractController
     }
 
     #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
-    public function contact(): Response
+    public function contact(
+        ContactType $form,
+        ): Response
     {
+        $form = $this->createForm(ContactType::class);
+
+        // on réceptionne les données du formulaire avec request
+        // si le formulaire est soumis et valide alors
+        // on récupère les données du formulaire pour les mettre dans le mail
+        // on instancie le nouveau mail
+        //On paramètre le mail
+        //On envoie le mail
+        // On affiche un msg de confirmation
+
         return $this->render('page/contact.html.twig', [
-            'controller_name' => 'ContactController',
+            'contact' => $form,
         ]);
     }
 }

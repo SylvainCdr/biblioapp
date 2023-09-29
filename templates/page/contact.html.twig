@@ -1,20 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PageController!{% endblock %}
+{% block title %}Hello PageController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="m-auto col-4 border rounded bg-light p-3">
+		{{ form_start(contact) }}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<div
+			class="mb-3">
+			{# Début de l input name #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/sylva/OneDrive/Bureau/DEV/PHP Symfo/biblioapp/src/Controller/PageController.php'|file_link(0) }}">src/Controller/PageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/sylva/OneDrive/Bureau/DEV/PHP Symfo/biblioapp/templates/page/index.html.twig'|file_link(0) }}">templates/page/index.html.twig</a></code></li>
-    </ul>
+			{{ form_label(contact.name) }}
+			{# le label  #}
+			<div class="input-group">
+				<span class="input-group-text" id="basic-addon1">
+					<i class="bi bi-person"></i>
+					{{ form_widget(contact.name, {
+    attr: {
+          class: 'form-control'
+    },
+        }) }}
+					{# l input avec son icône #}
+				</div>
+
+				<div
+					class="mb-3">
+					{# Début de l input email #}
+
+					{{ form_label(contact.email) }}
+					{# le label  #}
+					<div class="input-group">
+						<span class="input-group-text" id="basic-addon1">
+							<i class="bi bi-envelope-at"></i>
+							{{ form_widget(contact.email, {
+    attr: {
+          class: 'form-control'
+    },
+        }) }}
 </div>
-{% endblock %}
+							<div
+								class="mb-3">
+								{#Debut du select #}
+								{{ form_label(contact.objet) }}
+								{{ form_widget(contact.objet, {
+                        attr: {class: 'form-select'},
+                      })
+                      }}
+								<div>{# <Fin du select #}
+
+
+									{# l input avec son icône #}
+								</div>
+
+
+								<div class="mb-3"> {# Début de l input #} {{ form_label(contact.message) }} {# le label #} <div class="input-group"> 
+                                <span class="input-group-text" id="basic-addon1"> <i class="bi bi-chat-left-text"></i>
+									{{ form_widget(contact.message, {
+    attr: {
+          class: 'form-control',
+          rows : 5,
+    },
+        }) }}
+									
+								</div> 
+							</div>
+
+							<div class=" form-check mb-3">
+								<input class="form-check-input" type="checkbox" name="" id="form-check">
+								<label for="form-check-label">
+									J'accepte d'être recontacté(e)
+								</label>
+							</div>
+
+							<button type="submit" class="btn btn-dark">
+								Envoyer
+							</button>
+
+
+							{{ form_end(contact) }}
+						</div>
+
+
+					{% endblock %}
